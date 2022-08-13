@@ -19,9 +19,7 @@ export const User = (props) => {
   }
 
   return (
-    <div
-      className={`my-5 flex justify-start items-center self-start ${className}`}
-    >
+    <div className={`flex justify-start items-center self-start ${className}`}>
       {avatar == null ? (
         <div
           className={`flex justify-center items-center text-white text-5xl w-20 h-20 z-10 rounded-full bg-blue-400 border-2 border-solid border-white`}
