@@ -9,3 +9,9 @@ app.post("/post", (req, res) => {
 const PORT = process.env.PORT || 8080;
   
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
+
+// require database connection 
+const dbConnect = require("./db/dbConnect");
+
+// execute database connection 
+dbConnect();
