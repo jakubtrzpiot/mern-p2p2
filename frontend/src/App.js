@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { User } from './components/User';
 import { Button, Input } from './components/CustomComponents';
@@ -9,6 +10,14 @@ export const App = () => {
   let navigate = useNavigate();
 
   // REWRITE TO FIT OUR NODEJS BACKEND //
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await axios('http://localhost:5000/users');
+      console.log(res.data);
+    };
+    fetchData();
+  }, []);
 
   // onAuthStateChanged(auth, (user) => {
   //   if (user) {
