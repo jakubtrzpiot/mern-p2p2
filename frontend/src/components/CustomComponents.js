@@ -4,9 +4,8 @@ const Button = (props) => {
   const { className, func, content } = props;
   return (
     <button
-      type="submit"
       onClick={func}
-      className={`my-1 p-2.5 rounded-md bg-white hover:bg-primary hover:text-white hover:cursor-pointer transition ${className}`}
+      className={`p-2.5 rounded-md bg-white hover:bg-primary hover:text-white hover:cursor-pointer transition ${className}`}
     >
       {content}
     </button>
@@ -18,7 +17,7 @@ const Input = (props) => {
   return (
     <input
       name={name}
-      className={`my-1 p-2.5 rounded-md outline-none ${className}`}
+      className={`p-2.5 rounded-md outline-none ${className}`}
       type={isPassword ? 'password' : 'text'}
       placeholder={content}
     />

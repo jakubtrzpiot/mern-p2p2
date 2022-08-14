@@ -79,7 +79,7 @@ export const App = () => {
   return (
     <div className="bg-[#222222] h-screen grid grid-cols-3 grid-rows-4">
       <User
-        className="mx-10 my-10"
+        className="m-10"
         avatar={avatar}
         username={username}
         status="online"
@@ -87,13 +87,13 @@ export const App = () => {
         bgcolor="bg-purple-400"
       />
       <Button
-        className="mx-10 my-10 col-start-3 row-start-1 self-start justify-self-end"
+        className="m-10 col-start-3 row-start-1 self-start justify-self-end"
         //func={onSignOut}
         content="Sign Out"
       />
-      <div className="col-start-2 row-start-2 flex justify-center">
+      <div className="gap-2 col-start-2 row-start-2 flex justify-center">
         <form
-          className="w-[280px] flex flex-col justify-center"
+          className="gap-2 w-[280px] flex flex-col justify-center"
           onSubmit={onUpdateProfile}
         >
           <Input name="newUsername" content="Enter new name" />
@@ -101,16 +101,12 @@ export const App = () => {
           <Button content="Update Profile" />
         </form>
         <div className="flex flex-col justify-center items-center">
-          <Button
-            className="ml-2 w-40"
-            func={onDeleteAvatar}
-            content="Delete Avatar"
-          />
+          <Button func={onDeleteAvatar} content="Delete Avatar" />
         </div>
       </div>
       <form
         //onSubmit={onUpdatePassword}
-        className="w-[280px] col-start-2 row-start-3 flex flex-col justify-center justify-self-center"
+        className="gap-2 w-[280px] col-start-2 row-start-3 flex flex-col justify-center justify-self-center"
       >
         <Input name="password" isPassword content="Enter your password" />
         <Input name="newPassword" isPassword content="Enter new password" />
