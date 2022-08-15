@@ -24,6 +24,20 @@ const Admin = () => {
         // func={onCheckAvatar}
         content="alert(avatar)"
       />
+      <table className="text-white flex justify-center">
+        <tr className="border">
+          <th className="border">
+            Username
+          </th>
+          <th className="border">
+            Email
+          </th>
+          <th className="border">
+            Password
+          </th>
+        </tr>
+        
+      </table>
     </div>
   );
 };
