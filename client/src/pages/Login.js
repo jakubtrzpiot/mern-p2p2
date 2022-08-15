@@ -8,8 +8,8 @@ export const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     let { email, password } = e.target;
-     /* REWRITE TO FIT OUR NODEJS BACKEND */
-     /* signInWithEmailAndPassword(auth, email.value, password.value)
+    /* REWRITE TO FIT OUR NODEJS BACKEND */
+    /* signInWithEmailAndPassword(auth, email.value, password.value)
       .then(() => {
         navigate('/', { replace: true });
       })
@@ -21,10 +21,10 @@ export const Login = () => {
   return (
     <div className="flex bg-[#222222] h-screen justify-center items-center flex-col">
       <p className="text-white text-4xl mb-10">Log In</p>
-      <form onSubmit={onSubmit} className="flex flex-col w-[280px]">
+      <form onSubmit={onSubmit} className="gap-2 flex flex-col w-[280px]">
         <Input name="email" content="Enter your email" />
         <Input name="password" content="Enter your password" isPassword />
-        <Button content="Log In"/>
+        <Button content="Log In" />
       </form>
       <div className="my-1 text-white">
         Don't have an account yet?{' '}

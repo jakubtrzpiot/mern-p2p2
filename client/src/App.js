@@ -11,14 +11,6 @@ export const App = () => {
 
   // REWRITE TO FIT OUR NODEJS BACKEND //
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await axios('http://localhost:5000/users');
-      console.log(res.data);
-    };
-    fetchData();
-  }, []);
-
   // onAuthStateChanged(auth, (user) => {
   //   if (user) {
   //     setUsername(user.displayName);
@@ -27,13 +19,9 @@ export const App = () => {
   //     navigate('/login', { replace: true });
   //   }
   // });
-  // const onSignOut = () => {
-  //   signOut(auth)
-  //     .then(() => {})
-  //     .catch((error) => {
-  //       alert(error.code);
-  //     });
-  // };
+  const onSignOut = () => {
+    navigate('/login');
+  };
   // const user = auth.currentUser;
   const onUpdateProfile = (e) => {
     e.preventDefault();
@@ -97,7 +85,7 @@ export const App = () => {
       />
       <Button
         className="m-10 col-start-3 row-start-1 self-start justify-self-end"
-        //func={onSignOut}
+        func={onSignOut}
         content="Sign Out"
       />
       <div className="gap-2 col-start-2 row-start-2 flex justify-center">

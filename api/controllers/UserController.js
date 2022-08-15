@@ -10,12 +10,24 @@ const listAllUsers = (req, res) => {
     });
 };
 
-const createNewUser = (req, res) => {
+const logInWithEmailAndPassword = (req, res) => {
   let newUser = new User(req.body);
   newUser
     .save()
     .then((user) => {
-      res.status(201).json(user);
+      res.redirect('/');
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+};
+
+const signUpWithEmailAndPassword = (req, res) => {
+  let newUser = new User(req.body);
+  newUser
+    .save()
+    .then((user) => {
+      res.redirect('/');
     })
     .catch((err) => {
       res.status(500).send(err);
@@ -42,4 +54,10 @@ const deleteUser = async (req, res) => {
     });
 };
 
-export { listAllUsers, createNewUser, updateUser, deleteUser };
+export {
+  listAllUsers,
+  logInWithEmailAndPassword,
+  signUpWithEmailAndPassword,
+  updateUser,
+  deleteUser,
+};
