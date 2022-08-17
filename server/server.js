@@ -6,8 +6,13 @@ import routes from './api/routes/routes.js';
 
 const app = express();
 
-app.use(cors());
-app.use(express.json());
+const options = [
+  express.json(),
+  express.urlencoded({ extended: false }),
+  cors(),
+];
+
+app.use(options);
 
 routes(app);
 

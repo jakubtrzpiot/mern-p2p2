@@ -1,15 +1,20 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button, Input, Hr } from '../components/CustomComponents';
+import { signUp } from '../api/UserApi'
 
 export const Signup = () => {
-  const navigate = useNavigate();
-  const onSubmit = (e) => {};
+  const onSubmit = (data) => {
+    data.preventDefault()
+    const { username, email, password } = data.target
+    if (username.value && email.value && password.value) {
+      signUp(username.value, email.value, password.value)
+    }
+  };
   return (
     <div className="flex bg-[#222222] h-screen justify-center items-center flex-col">
       <p className="text-white text-4xl mb-10">Sign Up</p>
       <form
-        method="POST"
         onSubmit={onSubmit}
         className="gap-2 flex flex-col w-[280px]"
       >
