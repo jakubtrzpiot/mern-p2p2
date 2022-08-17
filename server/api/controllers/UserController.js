@@ -11,9 +11,7 @@ const listAllUsers = (req, res) => {
 };
 
 const logInWithEmailAndPassword = (req, res) => {
-  let newUser = new User(req.body);
-  newUser
-    .save()
+  User.find({ email: req.body.email })
     .then((user) => {
       res.redirect('/');
     })
