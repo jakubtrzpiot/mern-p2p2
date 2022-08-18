@@ -13,9 +13,10 @@ const Button = (props) => {
 };
 
 const Input = (props) => {
-  const { className, name, isPassword, content } = props;
+  const { className, name, isPassword, content, register } = props;
   return (
     <input
+      {...register}
       name={name}
       className={`p-2.5 rounded-md outline-none ${className}`}
       type={isPassword ? 'password' : 'text'}
