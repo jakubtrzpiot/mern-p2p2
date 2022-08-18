@@ -1,7 +1,8 @@
 import React from 'react';
+import { Button } from './CustomComponents';
 
 export const User = props => {
-	const { className, avatar, username, status, notifs, bgcolor } = props;
+	const { className, avatar, username, status, notifs, bgcolor, email } = props;
 	let stcolor = '';
 	switch (status) {
 		case 'zw':
@@ -40,9 +41,14 @@ export const User = props => {
 				{notifs}
 			</div>
 			<div
-				className={`flex -ml-3 h-14 rounded-r-xl pl-6 pr-4 text-xl ${bgcolor} text-white self-center justify-center items-center border-2 border-solid border-white`}
+				className={`flex flex-col -ml-3 h-14 rounded-r-xl pl-6 pr-4 ${bgcolor} text-white self-center justify-center items-center border-2 border-solid border-white`}
 			>
-				{username}
+				<p className='text-xl'>
+					{username}
+				</p>
+				<p>
+					{email}
+				</p>
 			</div>
 		</div>
 	);

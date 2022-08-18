@@ -38,4 +38,13 @@ const isUserAuth = () => {
 	});
 };
 
-export { signUp, logIn, isUserAuth };
+const userDelete = (id) => {
+	return new Promise((resolve, reject) => {
+		axios
+			.post('/userDelete', id)
+			.then(res => resolve(res.data))
+			.catch(err => reject(err));
+	});
+}
+
+export { signUp, logIn, isUserAuth, userDelete };

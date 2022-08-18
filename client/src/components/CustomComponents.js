@@ -1,4 +1,5 @@
 import React from 'react';
+import { User } from './User';
 
 const Button = props => {
 	const { className, func, content } = props;

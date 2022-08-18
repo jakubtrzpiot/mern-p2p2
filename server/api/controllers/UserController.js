@@ -97,4 +97,10 @@ const getUsers = (req, res) => {
 	User.find({}).then(user => res.status(200).send(user));
 };
 
-export { signUp, logIn, isUserAuth, getUsers, verifyJWT };
+const userDelete = (req, res) => {
+	const user = req.body
+
+	User.deleteOne({_id:user.id}).then(res.json({message: 'User does not exist.'})).catch(err => console.log(err))
+}
+
+export { signUp, logIn, isUserAuth, getUsers, verifyJWT, userDelete };
