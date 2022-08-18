@@ -4,7 +4,7 @@ import { User } from '../components/User';
 import { Button, Input } from '../components/CustomComponents';
 import { isAuth } from '../api/UserApi';
 
-export const Profile = () => {
+export const Dashboard = () => {
   const [user, setUser] = useState({});
   let navigate = useNavigate();
 
@@ -23,7 +23,7 @@ export const Profile = () => {
     isAuth().then(({ isLoggedIn, currentUser }) => {
       isLoggedIn ? setUser(currentUser) : navigate('/login');
     });
-  }, []);
+  }, [navigate]);
 
   const onSignOut = () => {
     localStorage.removeItem('token');

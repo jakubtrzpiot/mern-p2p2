@@ -44,10 +44,10 @@ export const Signup = () => {
   };
 
   useEffect(() => {
-    isAuth().then(({ isLoggedIn, currentUser }) =>
-      isLoggedIn ? navigate('/u/' + currentUser.id) : null,
+    isAuth().then(({ isLoggedIn }) =>
+      isLoggedIn ? navigate('/dashboard') : null,
     );
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="flex justify-center items-center flex-col mx-auto">

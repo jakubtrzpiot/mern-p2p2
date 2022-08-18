@@ -29,18 +29,19 @@ export const Login = () => {
   const onSubmit = data => {
     logIn(data.email, data.password)
       .then(({ token, message }) => {
-        token ? localStorage.setItem('token', token) : alert(message);
-        window.location.reload();
+        token
+          ? localStorage.setItem('token', token) || window.location.reload()
+          : alert(message);
       })
       .catch(err => console.log(err.message));
   };
 
   const navigate = useNavigate();
   useEffect(() => {
-    isAuth().then(({ isLoggedIn, currentUser }) =>
-      isLoggedIn ? navigate('/u/' + currentUser.id) : null,
+    isAuth().then(({ isLoggedIn }) =>
+      isLoggedIn ? navigate('/dashboard') : null,
     );
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="flex justify-center items-center flex-col mx-auto">
