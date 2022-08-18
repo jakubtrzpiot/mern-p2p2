@@ -23,7 +23,7 @@ const Admin = () => {
 
 	return (
 		<div className="p-10 flex flex-col gap-5">
-			{users.forEach(user => {
+			{users.map(user => {
 				return (
 					<div className='flex items-center'>
 						<User
@@ -33,7 +33,7 @@ const Admin = () => {
 						<div>
 							{console.log(user._id)}
 							<Button
-								func = { onUserDelete(user._id) }
+								func = { onUserDelete.bind(this, user._id) }
 							/>
 						</div>
 					</div>
