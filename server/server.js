@@ -7,9 +7,9 @@ import routes from './api/routes/routes.js';
 const app = express();
 
 const options = [
-  express.json(),
-  express.urlencoded({ extended: false }),
-  cors(),
+	express.json(),
+	express.urlencoded({ extended: false }),
+	cors(),
 ];
 
 app.use(options);
@@ -17,6 +17,6 @@ app.use(options);
 routes(app);
 
 app.listen(
-  process.env.PORT,
-  console.log(`Server started on port ${process.env.PORT}`)
+	process.env.PORT,
+	console.log(`Server started on port ${process.env.PORT}`),
 );
