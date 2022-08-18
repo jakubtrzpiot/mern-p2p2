@@ -21,7 +21,7 @@ const schema = yup
 			.required('No password provided.')
 			.min(8, 'Password is too short.')
 			.matches(
-				/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/,
+				/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
 				'Password is weak.',
 			),
 	})
