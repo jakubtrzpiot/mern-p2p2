@@ -9,7 +9,7 @@ const Home = () => {
       isLoggedIn ? navigate('/u/' + currentUser.id) : null,
     );
   }, [navigate]);
-  return <>HUJ</>;
+  return <></>;
 };
 
 export { Home };
