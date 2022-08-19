@@ -1,4 +1,5 @@
 import axios from 'axios';
+const server = process.env.REACT_APP_SERVER_URL;
 
 const signUp = (username, email, password) => {
   const user = {
@@ -8,7 +9,7 @@ const signUp = (username, email, password) => {
   };
   return new Promise((resolve, reject) => {
     axios
-      .post('/signup', user)
+      .post(server + '/signup', user)
       .then(res => resolve(res.data))
       .catch(err => reject(err));
   });
@@ -21,7 +22,7 @@ const logIn = (email, password) => {
   };
   return new Promise((resolve, reject) => {
     axios
-      .post('/login', user)
+      .post(server + '/login', user)
       .then(res => resolve(res.data))
       .catch(err => reject(err));
   });
@@ -30,7 +31,7 @@ const logIn = (email, password) => {
 const userDelete = id => {
   return new Promise((resolve, reject) => {
     axios
-      .post('/userDelete', id)
+      .post(server + '/userDelete', id)
       .then(res => resolve(res.data))
       .catch(err => reject(err));
   });
@@ -39,7 +40,7 @@ const userDelete = id => {
 const isAuth = () => {
   return new Promise((resolve, reject) => {
     axios
-      .get('/isAuth', {
+      .get(server + '/isAuth', {
         headers: { 'x-access-token': localStorage.getItem('token') },
       })
       .then(res => resolve(res.data))

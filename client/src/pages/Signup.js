@@ -50,12 +50,9 @@ export const Signup = () => {
   }, [navigate]);
 
   return (
-    <div className="flex justify-center items-center flex-col mx-auto">
-      <p className="text-white text-4xl mb-10">Sign Up</p>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="gap-2 flex flex-col w-[280px]"
-      >
+    <div className="max-w-md xl:max-w-lg w-full mx-auto self-center">
+      <p className="text-white font-bold text-5xl mb-20">Sign up</p>
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
         <Input
           register={{ ...register('username') }}
           name="username"
@@ -75,16 +72,16 @@ export const Signup = () => {
           isPassword
         />
         <p className="text-white">{errors.password?.message}</p>
-        <Button content="Sign Up" />
+        <Button content="Sign up" />
       </form>
-      <div className="my-1 text-white">
+      <div className="mt-4 text-white text-center">
         Already have an account?{' '}
         <Link className="hover:text-primary transition" to="/login">
           Log in
         </Link>
       </div>
-      <Hr className="w-[280px] pt-4 pb-6" content="or" />
-      <Button className="w-[280px]" content="Google" />
+      <Hr className="pt-7 pb-10" content="or" />
+      <Button className="w-full" content="Google" />
     </div>
   );
 };

@@ -7,7 +7,7 @@ import { Home } from './pages/Home';
 
 export const App = () => {
   return (
-    <div className="bg-[#222222] h-screen w-full">
+    <div className="bg-[#222222] h-screen w-full flex  text-lg">
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
         <Route exact path="/u/:id" element={<Dashboard />}></Route>
