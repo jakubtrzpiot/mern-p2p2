@@ -23,22 +23,22 @@ export const User = props => {
     <div className={`${className} flex justify-start items-center self-start `}>
       {avatar == null ? (
         <div
-          className={`flex justify-center items-center text-white text-5xl w-20 h-20 z-10 rounded-full bg-blue-400 border-2 border-solid border-white`}
+          className={`flex justify-center items-center text-white text-5xl w-16 h-16 z-10 rounded-full bg-blue-400 border-2 border-solid border-white`}
         >
           {username ? username[0].toUpperCase() : null}
         </div>
       ) : (
         <img
           src={avatar}
-          className="object-cover rounded-full w-20 h-20 z-10 border-2 border-solid border-white"
+          className="object-cover rounded-full w-16 h-16 z-10 border-2 border-solid border-white"
           alt=""
         />
       )}
-      <div
+      {/* <div
         className={`${stcolor} flex -ml-7 mt-12 w-7 h-7 rounded-full z-20  justify-center items-center text-white text-sm border-2 border-solid border-white`}
       >
         {notifs}
-      </div>
+      </div> */}
       <div
         className={`${bgcolor} ${
           small ? 'hidden' : ''

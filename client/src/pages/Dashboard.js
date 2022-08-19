@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User } from '../components/User';
-import { Button, Input } from '../components/CustomComponents';
+import { Button } from '../components/CustomComponents';
 import { isAuth } from '../api/UserApi';
 
-export const Dashboard = () => {
+export const Dashboard = props => {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
 
@@ -20,9 +20,9 @@ export const Dashboard = () => {
   };
 
   return (
-    <div className="grid grid-cols-3 grid-rows-4 w-screen">
+    <div className="grid grid-cols-3 grid-rows-4 w-full h-full">
       <User
-        className="m-10"
+        className=""
         user={user}
         status="online"
         notifs=""
@@ -30,7 +30,7 @@ export const Dashboard = () => {
         small
       />
       <Button
-        className="m-10 col-start-3 row-start-1 self-start justify-self-end"
+        className="col-start-3 row-start-1 self-start justify-self-end"
         func={onSignOut}
         content="Sign Out"
       />

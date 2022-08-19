@@ -5,7 +5,7 @@ import { userDelete, isAuth } from '../api/UserApi';
 import { Button } from '../components/CustomComponents';
 import { User } from '../components/User';
 
-const Admin = () => {
+const Admin = props => {
   const [users, setUsers] = useState([]);
   const [admin, setAdmin] = useState({});
 
