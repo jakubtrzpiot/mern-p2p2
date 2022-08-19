@@ -44,12 +44,9 @@ export const Login = () => {
   }, [navigate]);
 
   return (
-    <div className="flex justify-center items-center flex-col mx-auto">
-      <p className="text-white text-4xl mb-10">Log In</p>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="gap-2 flex flex-col w-[280px]"
-      >
+    <div className="max-w-md mx-auto">
+      <p className="text-white text-5xl font-bold">Log In</p>
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-10">
         <Input
           register={{ ...register('email') }}
           name="email"
@@ -71,8 +68,8 @@ export const Login = () => {
           Sign up
         </Link>
       </div>
-      <Hr className="w-[280px] pt-4 pb-6" content="or" />
-      <Button className="w-[280px]" content="Google" />
+      <Hr className="" content="or" />
+      <Button className="" content="Google" />
     </div>
   );
 };
