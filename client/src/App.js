@@ -10,7 +10,7 @@ export const App = () => {
     <div className="bg-[#222222] h-screen flex">
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
-        <Route exact path="/dashboard" element={<Dashboard />}></Route>
+        <Route exact path="/u/:id" element={<Dashboard />}></Route>
         <Route exact path="/login" element={<Login />}></Route>
         <Route exact path="/signup" element={<Signup />}></Route>
         <Route exact path="/admin" element={<Admin />}></Route>

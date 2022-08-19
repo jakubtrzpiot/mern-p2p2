@@ -44,8 +44,8 @@ export const Signup = () => {
   };
 
   useEffect(() => {
-    isAuth().then(({ isLoggedIn }) =>
-      isLoggedIn ? navigate('/dashboard') : null,
+    isAuth().then(({ isLoggedIn, currentUser }) =>
+      isLoggedIn ? navigate('/u/' + currentUser.id) : null,
     );
   }, [navigate]);
 
