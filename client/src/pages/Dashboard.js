@@ -22,15 +22,17 @@ export const Dashboard = props => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row w-full h-full">
-      <UserComponent user={user} func={onSignOut} className="lg:order-last" />
-      <UsersList />
+    <div className="flex flex-col w-full h-full p-4 lg:flex-row-reverse">
+      <div className="flex items-center pb-4 border-b-2 lg:border-0 lg:self-start lg:gap-4 lg:flex-row-reverse">
+        <UserComponent user={user} func={onSignOut} className="grow" />
+        {user.permission === 'admin' ? (
+          <Link to={'/admin'}>
+            <Button content="To Admin" />
+          </Link>
+        ) : null}
+      </div>
       <Chat />
-      {user.permission === 'admin' ? (
-        <Link to={'/admin'}>
-          <Button content="To Admin" />
-        </Link>
-      ) : null}
+      <UsersList header="Friends" className="pt-4 lg:pt-0" />
     </div>
   );
 };

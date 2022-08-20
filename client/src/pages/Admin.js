@@ -4,6 +4,7 @@ import { isAuth, getUsers } from '../api/UserApi';
 import { Button } from '../components/CustomComponents';
 import { UserComponent } from '../components/UserComponent';
 import { UsersList } from '../components/UsersList';
+import { AdminUserView } from '../components/AdminUserView';
 
 export const Admin = props => {
   const [admin, setAdmin] = useState({});
@@ -29,18 +30,20 @@ export const Admin = props => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row w-full h-full">
-      <div className="flex items-center mb-8">
-        <UserComponent
-          user={admin}
-          func={onSignOut}
-          className="lg:order-last grow"
-        />
+    <div className="flex flex-col w-full h-full p-4 lg:flex-row-reverse">
+      <div className="flex items-center pb-4 border-b-2 lg:border-0 lg:self-start lg:gap-4 lg:flex-row-reverse">
+        <UserComponent user={admin} func={onSignOut} className="grow" />
         <Link to={'/u/' + admin.id}>
           <Button content="To Dashboard" />
         </Link>
       </div>
-      <UsersList users={users} type="del" />
+      <AdminUserView />
+      <UsersList
+        header="All Users"
+        users={users}
+        type="del"
+        className="pt-4 lg:pt-0"
+      />
     </div>
   );
 };

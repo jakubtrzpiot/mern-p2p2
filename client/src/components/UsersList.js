@@ -9,16 +9,16 @@ const add = <FontAwesomeIcon icon={faPlus} />;
 const del = <FontAwesomeIcon icon={faTrash} />;
 
 export const UsersList = props => {
-  const { users, type } = props;
+  const { header, users, type, className } = props;
   return (
-    <div className="w-full lg:w-[340px] flex flex-col gap-6">
+    <div
+      className={`flex flex-col gap-6 text-white overflow-auto lg:w-[340px] ${className}`}
+    >
+      <h1 className="hidden self-center text-2xl lg:block">{header}</h1>
       {users
         ? users.map(user => {
             return (
-              <div
-                key={user._id}
-                className="flex gap-4 items-center w-full text-white  rounded-full"
-              >
+              <div key={user._id} className="flex gap-4 items-center">
                 <UserComponent user={user} />
                 <div className="grow">
                   <p>{user.username}</p> <p>{user.email}</p>{' '}

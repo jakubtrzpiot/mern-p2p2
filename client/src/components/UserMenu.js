@@ -13,7 +13,7 @@ export const UserMenu = props => {
   };
 
   return (
-    <div className="right-0 bg-white h-full sm:w-[240px] w-full">
+    <div className="right-0 bg-white h-full w-full">
       <div>
         <UserComponent user={user} menuOpen /> <p>back</p>
       </div>
