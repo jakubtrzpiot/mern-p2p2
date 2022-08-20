@@ -38,7 +38,7 @@ export const SignupForm = () => {
   const onSubmit = data => {
     signUp(data.username, data.email, data.password)
       .then(({ message }) => {
-        // message ? alert(message) : navigate('/login');
+        message ? alert(message) : navigate('/login');
       })
       .catch(err => console.log(err.message));
   };
