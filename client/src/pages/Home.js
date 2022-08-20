@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { isAuth } from '../api/UserApi';
 
-const Home = props => {
+export const Home = props => {
   const navigate = useNavigate();
   useEffect(() => {
-    isAuth().then(({ isLoggedIn, currentUser }) =>
-      isLoggedIn ? navigate('/u/' + currentUser.id) : null,
+    isAuth().then(({ currentUser }) =>
+      currentUser ? navigate('/u/' + currentUser.id) : null,
     );
   }, [navigate]);
-  return <></>;
-};
 
-export { Home };
+  return <Link to="/login"></Link>;
+};

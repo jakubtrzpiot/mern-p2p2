@@ -32,7 +32,7 @@ const userDelete = id => {
   return new Promise((resolve, reject) => {
     axios
       .post(server + '/userDelete', id)
-      .then(res => resolve(res.data))
+      .then(res => resolve(res.data), window.location.reload())
       .catch(err => reject(err));
   });
 };
@@ -48,6 +48,15 @@ const isAuth = () => {
   });
 };
 
+const getUsers = () => {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(server + '/admin')
+      .then(res => resolve(res.data))
+      .catch(err => reject(err));
+  });
+};
+
 const updateUser = () => {};
 
-export { signUp, logIn, userDelete, isAuth };
+export { signUp, logIn, userDelete, isAuth, getUsers };

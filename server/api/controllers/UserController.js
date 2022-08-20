@@ -42,12 +42,14 @@ const logIn = (req, res) => {
             username: user.username,
             email: user.email,
             id: user._id,
+            status: user.status,
+            permission: user.permission,
           },
         };
         jwt.sign(
           payload,
           process.env.JWT_SECRET,
-          { expiresIn: '30 days' },
+          { expiresIn: '7 days' },
           (err, token) => {
             if (err) return res.json({ message: err.message });
             return res.json({ token: token });
@@ -67,7 +69,6 @@ const auth = (req, res, next) => {
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
       if (err) {
         return res.json({
-          isLoggedIn: false,
           message: 'Failed to Authenticate',
         });
       } else {
@@ -76,12 +77,12 @@ const auth = (req, res, next) => {
       }
     });
   } else {
-    res.json({ message: 'Incorret token given', isLoggedIn: false });
+    res.json({ message: 'Incorret token given' });
   }
 };
 
 const isAuth = (req, res) => {
-  return res.json({ isLoggedIn: true, currentUser: req.user });
+  return res.json({ currentUser: req.user });
 };
 
 const getUsers = (req, res) => {

@@ -15,6 +15,17 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  status: {
+    type: String,
+    required: true,
+    default: 'offline',
+  },
+  permission: {
+    type: String,
+    required: true,
+    default: 'user',
+  },
+  friends: [],
 });
 
 export default mongoose.model('User', userSchema);

@@ -6,8 +6,8 @@ import { SignupForm } from '../components/SignupForm';
 export const Signup = props => {
   const navigate = useNavigate();
   useEffect(() => {
-    isAuth().then(({ isLoggedIn, currentUser }) =>
-      isLoggedIn ? navigate('/u/' + currentUser.id) : null,
+    isAuth().then(({ currentUser }) =>
+      currentUser ? navigate('/u/' + currentUser.id) : null,
     );
   }, [navigate]);
 

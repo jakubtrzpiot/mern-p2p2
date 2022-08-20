@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { User } from '../components/User';
-import { Button } from '../components/CustomComponents';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { isAuth } from '../api/UserApi';
+import { Button } from '../components/CustomComponents';
+import { UserComponent } from '../components/UserComponent';
+import { UsersList } from '../components/UsersList';
+import { Chat } from '../components/Chat';
 
 export const Dashboard = props => {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
-    isAuth().then(({ isLoggedIn, currentUser }) => {
-      isLoggedIn ? setUser(currentUser) : navigate('/login');
-    });
+    isAuth().then(({ currentUser }) =>
+      !currentUser ? navigate('/login') : setUser(currentUser),
+    );
   }, [navigate]);
 
   const onSignOut = () => {
@@ -20,20 +22,15 @@ export const Dashboard = props => {
   };
 
   return (
-    <div className="grid grid-cols-3 grid-rows-4 w-full h-full">
-      <User
-        className=""
-        user={user}
-        status="online"
-        notifs=""
-        bgcolor="bg-purple-400"
-        small
-      />
-      <Button
-        className="col-start-3 row-start-1 self-start justify-self-end"
-        func={onSignOut}
-        content="Sign Out"
-      />
+    <div className="flex flex-col lg:flex-row w-full h-full">
+      <UserComponent user={user} func={onSignOut} className="lg:order-last" />
+      <UsersList />
+      <Chat />
+      {user.permission === 'admin' ? (
+        <Link to={'/admin'}>
+          <Button content="To Admin" />
+        </Link>
+      ) : null}
     </div>
   );
 };
