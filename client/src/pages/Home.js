@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
-import { Button } from "../components/CustomComponents";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { isAuth } from '../api/UserApi';
 
-const Home = () => {
+export const Home = props => {
   const navigate = useNavigate();
   useEffect(() => {
-    isAuth().then(({ isLoggedIn, currentUser }) =>
-      isLoggedIn ? navigate('/u/' + currentUser.id) : null,
+    isAuth().then(({ currentUser }) =>
+      currentUser ? navigate('/u/' + currentUser.id) : null,
     );
   }, [navigate]);
 
@@ -41,5 +40,7 @@ const Home = () => {
     </div>
   );
 };
+=======
+>>>>>>> b6fac255d51e122538d2f310aa725902fa9d5139
 
 export { Home };

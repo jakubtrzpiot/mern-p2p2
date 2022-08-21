@@ -1,26 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { userDelete, isAuth } from '../api/UserApi';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { isAuth, getUsers } from '../api/UserApi';
 import { Button } from '../components/CustomComponents';
-import { User } from '../components/User';
+import { UserComponent } from '../components/UserComponent';
+import { UsersList } from '../components/UsersList';
+import { AdminUserView } from '../components/AdminUserView';
 
-const Admin = () => {
-  const [users, setUsers] = useState([]);
+export const Admin = props => {
   const [admin, setAdmin] = useState({});
-
+  const [users, setUsers] = useState([]);
   const navigate = useNavigate();
+
   useEffect(() => {
-    isAuth().then(({ isLoggedIn, currentUser }) => {
-      isLoggedIn ? setAdmin(currentUser) : navigate('/login');
-    });
-    const fetchData = async () => {
-      await axios
-        .get('/admin')
-        .then(res => setUsers(res.data))
-        .catch(err => console.log(err));
-    };
-    fetchData();
+    isAuth().then(({ currentUser }) =>
+      !currentUser
+        ? navigate('/login')
+        : currentUser.permission !== 'admin'
+        ? navigate('/u/' + currentUser.id)
+        : setAdmin(currentUser),
+    );
+    getUsers({})
+      .then(res => setUsers(res))
+      .catch(err => console.log(err));
   }, [navigate]);
 
   const onSignOut = () => {
@@ -29,40 +30,20 @@ const Admin = () => {
   };
 
   return (
-    <div className="grid grid-cols-3 grid-rows-6 w-screen">
-      <User
-        className="m-10"
-        user={admin}
-        status="online"
-        notifs=""
-        bgcolor="bg-purple-400"
-      />
-      <Button
-        className="m-10 col-start-3 row-start-1 self-start justify-self-end"
-        func={onSignOut}
-        content="Sign Out"
-      />
-      <div className="m-10 p-2 row-start-2 row-span-2 col-start-2 overflow-y-scroll flex flex-col gap-5 text-white">
-        <div>
-          <p>Username</p>
-          <p>Email </p>
-          <p>Delete? </p>
-        </div>
-        {users.map(({ _id, username, email }) => {
-          return (
-            <div className="flex">
-              <p>{username}</p> <p>{email}</p>{' '}
-              <input value={_id} type="checkbox" />
-            </div>
-          );
-        })}
+    <div className="flex flex-col w-full h-full p-4 lg:flex-row-reverse">
+      <div className="flex items-center pb-4 border-b-2 lg:border-0 lg:self-start lg:gap-4 lg:flex-row-reverse">
+        <UserComponent user={admin} func={onSignOut} className="grow" />
+        <Link to={'/u/' + admin.id}>
+          <Button content="To Dashboard" />
+        </Link>
       </div>
-      <Button
-        className="row-start-4 col-start-2 self-start mx-auto"
-        content="Wyjeb zaznaczone"
+      <AdminUserView />
+      <UsersList
+        header="All Users"
+        users={users}
+        type="del"
+        className="pt-4 lg:pt-0"
       />
     </div>
   );
 };
-
-export { Admin };
