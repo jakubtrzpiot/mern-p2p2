@@ -40,7 +40,3 @@ export const Home = props => {
     </div>
   );
 };
-=======
->>>>>>> b6fac255d51e122538d2f310aa725902fa9d5139
-
-export { Home };

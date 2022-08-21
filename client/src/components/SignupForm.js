@@ -44,7 +44,7 @@ export const SignupForm = () => {
   };
 
   return (
-    <div className="max-w-md w-full py-12">
+    <div className="max-w-md w-full py-12 px-4">
       <p className="text-white font-bold text-5xl mb-20">Sign up</p>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
         <Input
