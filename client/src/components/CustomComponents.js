@@ -6,7 +6,7 @@ const Button = props => {
   return (
     <button
       onClick={func}
-      className={`p-2.5 rounded-md bg-white hover:bg-primary hover:text-white hover:cursor-pointer transition ${className}`}
+      className={`py-2.5 px-5 rounded-md bg-white hover:bg-primary hover:text-white hover:cursor-pointer transition ${className}`}
     >
       {content}
     </button>

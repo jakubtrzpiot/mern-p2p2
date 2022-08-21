@@ -9,7 +9,11 @@ module.exports = {
       colors: {
         primary: '#D9A744',
       },
+        backgroundImage: {
+        "homeBackground": "url('assets/home-bg.png')",
+      },
     },
   },
   plugins: [],
 };
+
