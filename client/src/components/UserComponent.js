@@ -20,20 +20,19 @@ export const UserComponent = props => {
   // }
 
   return (
-    <div
-      onClick={func}
-      className={`${className} flex justify-start items-center self-start hover:cursor-pointer`}
-    >
+    <div className={`${className} flex justify-start items-center self-start`}>
       {avatar == null ? (
         <div
-          className={`flex justify-center items-center text-white text-4xl w-14 h-14 z-10 rounded-full bg-blue-400 border-2 border-solid border-white`}
+          onClick={func}
+          className={`flex justify-center items-center text-white text-4xl w-14 h-14 z-10 rounded-full bg-blue-400 border-2 border-solid border-white hover:cursor-pointer`}
         >
           {username ? username[0].toUpperCase() : null}
         </div>
       ) : (
         <img
+          onClick={func}
           src={avatar}
-          className="object-cover rounded-full w-14 h-14 z-10 border-2 border-solid border-white"
+          className="object-cover rounded-full w-14 h-14 z-10 border-2 border-solid border-white hover:cursor-pointer"
           alt=""
         />
       )}

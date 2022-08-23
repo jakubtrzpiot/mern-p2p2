@@ -70,7 +70,7 @@ export const SignupForm = () => {
       </form>
       <div className="text-white text-center">
         Already have an account?{' '}
-        <Link className="text-primary" to="/login">
+        <Link className="text-primary" to="/login" replace="true">
           Log in
         </Link>
       </div>

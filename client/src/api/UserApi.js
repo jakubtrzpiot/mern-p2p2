@@ -48,10 +48,20 @@ const isAuth = () => {
   });
 };
 
-const getUsers = () => {
+//CHANGE TO AWAIT AND TRY/CATCH
+const getFriends = user => {
   return new Promise((resolve, reject) => {
     axios
-      .get(server + '/admin')
+      .get(server + '/dashboard', { params: user })
+      .then(res => resolve(res.data))
+      .catch(err => reject(err));
+  });
+};
+
+const getAllUsers = admin => {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(server + '/admin', { params: admin })
       .then(res => resolve(res.data))
       .catch(err => reject(err));
   });
@@ -59,4 +69,12 @@ const getUsers = () => {
 
 const updateUser = () => {};
 
-export { signUp, logIn, userDelete, isAuth, getUsers };
+export {
+  signUp,
+  logIn,
+  userDelete,
+  isAuth,
+  getFriends,
+  getAllUsers,
+  updateUser,
+};

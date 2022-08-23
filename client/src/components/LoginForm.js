@@ -57,7 +57,7 @@ export const LoginForm = () => {
       </form>
       <div className="text-white text-center">
         Don't have an account yet?{' '}
-        <Link className="text-primary" to="/signup">
+        <Link className="text-primary" to="/signup" replace="true">
           Sign up
         </Link>
       </div>

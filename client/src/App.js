@@ -7,13 +7,13 @@ import { Home } from './pages/Home';
 
 export const App = () => {
   return (
-    <div className="flex min-w-[340px] lg:h-screen items-center justify-center">
+    <div className="flex min-w-[340px] h-100vh lg:h-screen items-center justify-center">
       <Routes>
-        <Route exact path="/" element={<Home />}></Route>
-        <Route exact path="/u/:id" element={<Dashboard />}></Route>
-        <Route exact path="/login" element={<Login />}></Route>
-        <Route exact path="/signup" element={<Signup />}></Route>
-        <Route exact path="/admin" element={<Admin />}></Route>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/u/:id" element={<Dashboard />} />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/admin" element={<Admin />} />
       </Routes>
     </div>
   );

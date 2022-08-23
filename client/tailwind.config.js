@@ -7,14 +7,13 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: '#D9A744',
+        primary: 'orange',
         bg: '#222222',
       },
-        backgroundImage: {
-        "homeBackground": "url('assets/home-bg.png')",
+      backgroundImage: {
+        homeBrowser: "url('assets/home-bg.png')",
       },
     },
   },
   plugins: [],
 };
-
