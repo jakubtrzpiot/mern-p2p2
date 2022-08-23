@@ -3,7 +3,6 @@ import { useNavigate, Link } from 'react-router-dom';
 import { isAuth } from '../api/UserApi';
 import { Button } from '../components/CustomComponents';
 import { SignupForm } from '../components/SignupForm';
-import { BrowserView, MobileView } from 'react-device-detect';
 
 export const Home = props => {
   const navigate = useNavigate();
@@ -22,15 +21,11 @@ export const Home = props => {
       <h1 className="text-white text-6xl font-bold text-center">
         <p>Connect with</p> <p>anyone,</p> <p>anywhere</p>
       </h1>
-      <div className="">
-        <MobileView>
-          <Link to="/signup">
-            <Button className="py-6 px-12 text-xl" content="Join us today!" />
-          </Link>
-        </MobileView>
-        <BrowserView>
-          <SignupForm />
-        </BrowserView>
+      <Link to="/signup" className="flex lg:hidden">
+        <Button className="py-6 px-12 text-xl" content="Join us today!" />
+      </Link>
+      <div className="hidden lg:flex">
+        <SignupForm />
       </div>
     </div>
   );
