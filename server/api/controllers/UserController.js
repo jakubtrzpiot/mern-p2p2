@@ -44,6 +44,7 @@ const logIn = (req, res) => {
             id: user._id,
             status: user.status,
             permission: user.permission,
+            friends: user.friends,
           },
         };
         jwt.sign(
@@ -85,8 +86,22 @@ const isAuth = (req, res) => {
   return res.json({ currentUser: req.user });
 };
 
-const getUsers = (req, res) => {
-  User.find({}).then(user => res.status(200).send(user));
+const getFriends = (req, res) => {
+  const user = req.query;
+  if (['admin', 'user'].includes(user.permission)) {
+    User.find({ username: { $in: user.friends } }).then(users =>
+      res.status(200).send(users),
+    );
+  } else res.json({ message: 'Failed to Authenticate' });
+};
+
+const getAllUsers = (req, res) => {
+  const admin = req.query;
+  if (admin.permission === 'admin') {
+    User.find({ permission: { $ne: 'admin' } }).then(users =>
+      res.status(200).send(users),
+    );
+  } else res.json({ message: 'Failed to Authenticate' });
 };
 
 const userDelete = (req, res) => {
@@ -97,4 +112,4 @@ const userDelete = (req, res) => {
     .catch(err => console.log(err));
 };
 
-export { signUp, logIn, auth, isAuth, getUsers, userDelete };
+export { signUp, logIn, auth, isAuth, getFriends, getAllUsers, userDelete };

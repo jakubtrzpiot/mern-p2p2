@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { isAuth, getUsers } from '../api/UserApi';
+import { isAuth, getAllUsers } from '../api/UserApi';
 import { Button } from '../components/CustomComponents';
 import { UserComponent } from '../components/UserComponent';
 import { UsersList } from '../components/UsersList';
@@ -19,10 +19,10 @@ export const Admin = props => {
         ? navigate('/u/' + currentUser.id)
         : setAdmin(currentUser),
     );
-    getUsers({})
+    getAllUsers({ permission: admin.permission })
       .then(res => setUsers(res))
       .catch(err => console.log(err));
-  }, [navigate]);
+  }, [navigate, admin.permission]);
 
   const onSignOut = () => {
     localStorage.removeItem('token');
@@ -31,7 +31,7 @@ export const Admin = props => {
 
   return (
     <div className="flex flex-col w-full h-full p-4 lg:flex-row-reverse">
-      <div className="flex items-center pb-4 border-b-2 lg:border-0 lg:self-start lg:gap-4 lg:flex-row-reverse">
+      <div className="flex items-center pb-4 lg:self-start lg:gap-4 lg:flex-row-reverse">
         <UserComponent user={admin} func={onSignOut} className="grow" />
         <Link to={'/u/' + admin.id}>
           <Button content="To Dashboard" />
@@ -42,7 +42,7 @@ export const Admin = props => {
         header="All Users"
         users={users}
         type="del"
-        className="pt-4 lg:pt-0"
+        className="pt-2 lg:pt-0"
       />
     </div>
   );
