@@ -6,7 +6,7 @@ import { UserComponent } from '../components/UserComponent';
 import { UsersList } from '../components/UsersList';
 import { AdminUserView } from '../components/AdminUserView';
 
-export const Admin = props => {
+export const Admin = (props) => {
   const [admin, setAdmin] = useState({});
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
@@ -17,11 +17,11 @@ export const Admin = props => {
         ? navigate('/login')
         : currentUser.permission !== 'admin'
         ? navigate('/u/' + currentUser.id)
-        : setAdmin(currentUser),
+        : setAdmin(currentUser)
     );
     getAllUsers({ permission: admin.permission })
-      .then(res => setUsers(res))
-      .catch(err => console.log(err));
+      .then((res) => setUsers(res))
+      .catch((err) => console.log(err));
   }, [navigate, admin.permission]);
 
   const onSignOut = () => {
@@ -30,8 +30,8 @@ export const Admin = props => {
   };
 
   return (
-    <div className="flex flex-col w-full h-full p-4 lg:flex-row-reverse">
-      <div className="flex items-center pb-4 lg:self-start lg:gap-4 lg:flex-row-reverse">
+    <div className="flex flex-col w-full h-full p-4 md:flex-row-reverse">
+      <div className="flex items-center pb-4 md:self-start md:gap-4 md:flex-row-reverse">
         <UserComponent user={admin} func={onSignOut} className="grow" />
         <Link to={'/u/' + admin.id}>
           <Button content="To Dashboard" />
@@ -42,7 +42,7 @@ export const Admin = props => {
         header="All Users"
         users={users}
         type="del"
-        className="pt-2 lg:pt-0"
+        className="pt-2 md:pt-0"
       />
     </div>
   );

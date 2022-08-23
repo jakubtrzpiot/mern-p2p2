@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { isAuth } from '../api/UserApi';
-import { Button } from '../components/CustomComponents';
+import { Button, Hr } from '../components/CustomComponents';
 import { SignupForm } from '../components/SignupForm';
 
-export const Home = props => {
+export const Home = (props) => {
   const navigate = useNavigate();
   // useEffect(() => {
   //   isAuth().then(({ currentUser }) =>
@@ -17,16 +17,29 @@ export const Home = props => {
   // }, [navigate]);
 
   return (
-    <div className="bg-cover w-full bg-center h-full lg:bg-homeBrowser">
-      <h1 className="text-white text-6xl font-bold text-center">
-        <p>Connect with</p> <p>anyone,</p> <p>anywhere</p>
+    <div className="flex w-full h-full p-4 flex-col items-center justify-center lg:flex-row lg:justify-between lg:max-w-[1280px] lg:mx-auto">
+      <h1 className="text-6xl font-extrabold text-center px-6 pb-16 pt-20 md:text-8xl md:py-12 text-transparent bg-clip-text bg-[length:400%] animate-bg-animation bg-gradient-to-r from-purple-500 via-pink-600 to-red-600">
+        <p>Connect</p> <p>with</p> <p>anyone,</p> <p>anywhere</p>
       </h1>
-      <Link to="/signup" className="flex lg:hidden">
-        <Button className="py-6 px-12 text-xl" content="Join us today!" />
-      </Link>
-      <div className="hidden lg:flex">
-        <SignupForm />
+      <div className="flex flex-col md:hidden">
+        <Link to="/signup">
+          <Button
+            className="py-6 px-10 text-xl w-full bg-black text-white"
+            content="Join us today!"
+          />
+        </Link>
+        <Hr
+          content="or"
+          className="self-center w-full py-3 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
+        />
+        <Link to="/login">
+          <Button
+            className="py-6 px-10 text-xl w-full bg-black text-white"
+            content="Sign in!"
+          />
+        </Link>
       </div>
+      <SignupForm className="hidden md:block lg:-mt-24" />
     </div>
   );
 };

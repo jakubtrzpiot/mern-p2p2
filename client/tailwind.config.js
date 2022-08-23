@@ -6,12 +6,21 @@ module.exports = {
       sans: ['Figtree', 'sans-serif'],
     },
     extend: {
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
       colors: {
         primary: 'orange',
-        bg: '#222222',
+        bg: '#000',
       },
-      backgroundImage: {
-        homeBrowser: "url('assets/home-bg.png')",
+      animation: {
+        'bg-animation': 'AnimationName 3s ease-in-out infinite',
+      },
+      keyframes: {
+        AnimationName: {
+          '0%, 100%': { 'background-position': '28% 100%' },
+          '50%': { 'background-position': '89% 0' },
+        },
       },
     },
   },
