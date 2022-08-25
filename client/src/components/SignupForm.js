@@ -28,7 +28,7 @@ const schema = yup
   .required();
 
 export const SignupForm = (props) => {
-  const { className } = props;
+  const { formContainer, signUpText } = props;
   const {
     register,
     handleSubmit,
@@ -45,8 +45,10 @@ export const SignupForm = (props) => {
   };
 
   return (
-    <div className={`max-w-md w-full py-12 px-4 ${className}`}>
-      <p className="text-white font-bold text-6xl mb-20">Sign up</p>
+    <div className={`max-w-md w-full py-12 px-4 ${formContainer}`}>
+      <p className={`text-white font-bold text-6xl mb-20 ${signUpText}`}>
+        Sign up
+      </p>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
         <Input
           register={{ ...register('username') }}
@@ -67,7 +69,7 @@ export const SignupForm = (props) => {
           isPassword
         />
         <p className="text-white">{errors.password?.message}</p>
-        <Button className="mt-5 mb-3" content="Sign up" />
+        <Button className="mt-5 mb-3 text-black" content="Sign up" />
       </form>
       <div className="text-white text-center">
         Already have an account?{' '}
