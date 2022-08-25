@@ -24,7 +24,7 @@ export const Home = (props) => {
   return (
     <div className="flex w-full h-full p-4 flex-col items-center justify-center lg:flex-row lg:justify-between lg:max-w-[1280px] lg:mx-auto">
       <h1
-        className={`text-6xl font-bold text-center text-white px-6 pb-16 pt-20 md:text-8xl md:py-12 absolute`}
+        className={`text-6xl font-bold text-center text-white px-6 pb-16 pt-20 md:text-8xl md:py-12`}
       >
         <p className="pb-2">Connect</p>
         <p className="pb-2">with</p>
@@ -61,7 +61,7 @@ export const Home = (props) => {
         </Link>
       </div>
       <SignupForm
-        form="hidden md:block z-auto relative"
+        form="hidden md:block z-1 relative"
         signup={`w-full text-orange-400`}
         input="placeholder-white bg-transparent text-white font-normal focus:shadow focus:border-orange-400 focus:border-solid focus:border"
         button="bg-transparent text-orange-400 text-xl hover:bg-orange-400 hover:text-white"
