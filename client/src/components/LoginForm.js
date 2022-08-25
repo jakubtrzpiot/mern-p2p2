@@ -39,7 +39,7 @@ export const LoginForm = (props) => {
 
   return (
     <div className={`max-w-md w-full py-12 px-4 ${className}`}>
-      <p className="text-white font-bold text-6xl mb-20">Log in</p>
+      <p className="text-white font-bold text-6xl mb-20">Sign in</p>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
         <Input
           register={{ ...register('email') }}
@@ -55,7 +55,7 @@ export const LoginForm = (props) => {
           isPassword
         />
         <p className="text-white">{errors.password?.message}</p>
-        <Button className="mt-5 mb-3" content="Log in" />
+        <Button className="mt-5 mb-3" content="Sign in" />
       </form>
       <div className="text-white text-center">
         Don't have an account yet?{' '}

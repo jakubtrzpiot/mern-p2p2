@@ -81,7 +81,7 @@ export const SignupForm = (props) => {
       <div className="text-white text-center">
         Already have an account?{' '}
         <Link className={`text-primary ${link}`} to="/login" replace="true">
-          Log in
+          Sign in
         </Link>
       </div>
       {/* <Hr className="pt-7 pb-10" content="or Sign up with" />

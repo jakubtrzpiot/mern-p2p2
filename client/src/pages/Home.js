@@ -45,23 +45,23 @@ export const Home = (props) => {
           <li></li>
         </ul>
       </div>
-      <div className="flex flex-col md:hidden">
+      <div className="flex flex-col z-10 relative md:hidden">
         <Link to="/signup">
           <Button
-            className={`py-6 px-10 text-xl w-full ${gradient}`}
+            className={`py-6 px-10 text-xl text-white w-full bg-transparent`}
             content="Join us today!"
           />
         </Link>
         <Hr content="or" className="self-center w-full py-3" />
         <Link to="/login">
           <Button
-            className={`py-6 px-10 text-xl w-full ${gradient}`}
+            className={`py-6 px-10 text-xl text-white w-full bg-transparent`}
             content="Sign in!"
           />
         </Link>
       </div>
       <SignupForm
-        form="hidden md:block z-1 relative"
+        form="hidden md:block z-10 relative"
         signup={`w-full text-orange-400`}
         input="placeholder-white bg-transparent text-white font-normal focus:shadow focus:border-orange-400 focus:border-solid focus:border"
         button="bg-transparent text-orange-400 text-xl hover:bg-orange-400 hover:text-white"
