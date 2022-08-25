@@ -11,15 +11,16 @@ module.exports = {
       },
       colors: {
         primary: 'orange',
-        bg: '#000',
+        bg: 'black',
       },
       animation: {
-        'bg-animation': 'AnimationName 3s ease-in-out infinite',
+        'bg-animation': 'gradient 5s linear infinite',
       },
       keyframes: {
-        AnimationName: {
-          '0%, 100%': { 'background-position': '28% 100%' },
-          '50%': { 'background-position': '89% 0' },
+        gradient: {
+          '0%': { 'background-position': '0 50%' },
+          '50%': { 'background-position': '100% 50%' },
+          '100%': { 'background-position': '0 50%' },
         },
       },
     },

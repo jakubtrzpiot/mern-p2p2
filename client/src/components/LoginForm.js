@@ -45,6 +45,7 @@ export const LoginForm = (props) => {
           register={{ ...register('email') }}
           name="email"
           content="Enter your email"
+          className={`py-2 px-4 rounded-md outline-none ${className}`}
         />
         <p className="text-white">{errors.email?.message}</p>
         <Input
