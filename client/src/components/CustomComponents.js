@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Button = props => {
+const Button = (props) => {
   const { className, func, content, icon } = props;
   return (
     <button
@@ -12,11 +12,11 @@ const Button = props => {
   );
 };
 
-const Input = props => {
-  const { className, name, isPassword, content, register } = props;
+const Input = (props) => {
+  const { className, name, isPassword, content, register, label } = props;
   return (
     <div className="flex flex-col">
-      <label className="text-white py-1" htmlFor={name}>
+      <label className={`text-white py-1 ${label}`} htmlFor={name}>
         {name.charAt(0).toUpperCase() + name.slice(1)}
       </label>
       <input
@@ -30,7 +30,7 @@ const Input = props => {
   );
 };
 
-const Hr = props => {
+const Hr = (props) => {
   const { className, content } = props;
   return (
     <div className={`relative flex items-center ${className}`}>

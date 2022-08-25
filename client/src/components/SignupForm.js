@@ -22,13 +22,13 @@ const schema = yup
       .min(8, 'Password is too short.')
       .matches(
         /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
-        'Password is weak.',
+        'Password is weak.'
       ),
   })
   .required();
 
-export const SignupForm = props => {
-  const { formContainer, signUpText } = props;
+export const SignupForm = (props) => {
+  const { form, signup, input, button, link, label } = props;
   const {
     register,
     handleSubmit,
@@ -36,45 +36,52 @@ export const SignupForm = props => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const navigate = useNavigate();
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     signUp(data.username, data.email, data.password)
       .then(({ message }) => {
         message ? alert(message) : navigate('/login');
       })
-      .catch(err => console.log(err.message));
+      .catch((err) => console.log(err.message));
   };
 
   return (
-    <div className={`max-w-md w-full py-12 px-4 ${formContainer}`}>
-      <p className={`text-white font-bold text-6xl pb-20 ${signUpText}`}>
-        Sign up
-      </p>
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
+    <div className={`max-w-md w-full py-12 px-4 ${form}`}>
+      <p className={`text-white font-bold text-6xl pb-20 ${signup}`}>Sign up</p>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col gap-2 font-bold"
+      >
         <Input
           register={{ ...register('username') }}
           name="username"
           content="Enter your username"
+          className={`${input}`}
+          label={`${label}`}
         />
-        <p className="text-white">{errors.username?.message}</p>
+        <p className="text-white font-normal">{errors.username?.message}</p>
         <Input
           register={{ ...register('email') }}
           name="email"
           content="Enter your email"
+          className={`${input}`}
+          label={`${label}`}
         />
-        <p className="text-white">{errors.email?.message}</p>
+        <p className="text-white font-normal">{errors.email?.message}</p>
         <Input
           register={{ ...register('password') }}
           name="password"
           content="Enter your password"
           isPassword
+          className={`${input}`}
+          label={`${label}`}
         />
-        <p className="text-white">{errors.password?.message}</p>
-        <Button className="mt-5 mb-3 text-black" content="Sign up" />
+        <p className="text-white font-normal">{errors.password?.message}</p>
+        <Button className={`mt-5 mb-3 ${button}`} content="Sign up" />
       </form>
       <div className="text-white text-center">
         Already have an account?{' '}
-        <Link className="text-primary" to="/login" replace="true">
-          Log in
+        <Link className={`text-primary ${link}`} to="/login" replace="true">
+          Sign in
         </Link>
       </div>
       {/* <Hr className="pt-7 pb-10" content="or Sign up with" />
