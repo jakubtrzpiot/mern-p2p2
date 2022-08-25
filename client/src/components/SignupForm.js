@@ -22,12 +22,12 @@ const schema = yup
       .min(8, 'Password is too short.')
       .matches(
         /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
-        'Password is weak.'
+        'Password is weak.',
       ),
   })
   .required();
 
-export const SignupForm = (props) => {
+export const SignupForm = props => {
   const { formContainer, signUpText } = props;
   const {
     register,
@@ -36,17 +36,17 @@ export const SignupForm = (props) => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const navigate = useNavigate();
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     signUp(data.username, data.email, data.password)
       .then(({ message }) => {
         message ? alert(message) : navigate('/login');
       })
-      .catch((err) => console.log(err.message));
+      .catch(err => console.log(err.message));
   };
 
   return (
     <div className={`max-w-md w-full py-12 px-4 ${formContainer}`}>
-      <p className={`text-white font-bold text-6xl mb-20 ${signUpText}`}>
+      <p className={`text-white font-bold text-6xl pb-20 ${signUpText}`}>
         Sign up
       </p>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">

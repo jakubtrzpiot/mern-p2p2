@@ -4,7 +4,7 @@ import { isAuth } from '../api/UserApi';
 import { Button, Hr } from '../components/CustomComponents';
 import { SignupForm } from '../components/SignupForm';
 
-export const Home = (props) => {
+export const Home = props => {
   const navigate = useNavigate();
   // useEffect(() => {
   //   isAuth().then(({ currentUser }) =>
@@ -37,8 +37,8 @@ export const Home = (props) => {
         </Link>
       </div>
       <SignupForm
-        formContainer="hidden w-full text-transparent bg-clip-text bg-[length:400%] animate-bg-animation bg-gradient-to-r from-orange-600 via-yellow-600 to-red-600 md:block lg:-mt-24"
-        signUpText="w-full text-transparent bg-clip-text bg-[length:400%] animate-bg-animation bg-gradient-to-r from-orange-600 via-yellow-600 to-red-600"
+        formContainer="hidden md:block lg:-mt-24"
+        signUpText="text-transparent bg-[length:400%] bg-clip-text animate-bg-animation bg-gradient-to-r from-orange-600 via-yellow-600 to-red-600"
       />
     </div>
   );

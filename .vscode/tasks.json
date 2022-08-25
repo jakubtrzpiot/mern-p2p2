@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "dev",
+      "path": "server",
+      "problemMatcher": [],
+      "label": "start server",
+      "detail": "nodemon server.js"
+    },
+    {
+      "type": "npm",
+      "script": "kudasai",
+      "path": "client",
+      "problemMatcher": [],
+      "label": "start client",
+      "detail": "react-scripts start"
+    },
+    {
+      "label": "start",
+      "dependsOn": ["start server", "start client"]
+    }
+  ]
+}
