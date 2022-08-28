@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Button = (props) => {
+const Button = props => {
   const { className, func, content, icon } = props;
   return (
     <button
@@ -12,25 +12,28 @@ const Button = (props) => {
   );
 };
 
-const Input = (props) => {
-  const { className, name, isPassword, content, register, label } = props;
+const Input = props => {
+  const { className, name, isPassword, register } = props;
   return (
-    <div className="flex flex-col">
-      <label className={`text-white py-1 ${label}`} htmlFor={name}>
-        {name.charAt(0).toUpperCase() + name.slice(1)}
-      </label>
+    <div className="flex flex-col relative">
       <input
         {...register}
         name={name}
-        className={`py-2 px-4 rounded-md outline-none ${className}`}
+        className={`peer h-[68px] px-5 w-full rounded-[10px] text-white placeholder-transparent focus:outline-none bg-[#3e3b39] ${className}`}
         type={isPassword ? 'password' : 'text'}
-        placeholder={content}
+        placeholder={name}
       />
+      <label
+        for={name}
+        class="absolute left-5 top-[4px] text-[#BFBFBF] text-sm font-medium tracking-[.2px] transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-white peer-placeholder-shown:top-[1.4rem] peer-focus:-top-3.5 peer-focus:text-black peer-focus:text-sm peer-focus:bg-primary peer-focus:rounded-[5px] peer-focus:px-2 peer-focus-visible:bg-primary peer-focus-visible:px-2 peer-focus-visible:rounded"
+      >
+        {name.charAt(0).toUpperCase() + name.slice(1)}
+      </label>
     </div>
   );
 };
 
-const Hr = (props) => {
+const Hr = props => {
   const { className, content } = props;
   return (
     <div className={`relative flex items-center ${className}`}>

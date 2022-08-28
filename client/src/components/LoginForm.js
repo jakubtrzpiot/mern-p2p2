@@ -19,7 +19,7 @@ const schema = yup
   })
   .required();
 
-export const LoginForm = (props) => {
+export const LoginForm = props => {
   const { className } = props;
   const {
     register,
@@ -27,31 +27,25 @@ export const LoginForm = (props) => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     logIn(data.email, data.password)
       .then(({ token, message }) => {
         token
           ? localStorage.setItem('token', token) || window.location.reload()
           : alert(message);
       })
-      .catch((err) => console.log(err.message));
+      .catch(err => console.log(err.message));
   };
 
   return (
     <div className={`max-w-md w-full py-12 px-4 ${className}`}>
-      <p className="text-white font-bold text-6xl mb-20">Sign in</p>
+      <p className="text-white font-bold text-6xl pb-20">Sign in</p>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
-        <Input
-          register={{ ...register('email') }}
-          name="email"
-          content="Enter your email"
-          className={`py-2 px-4 rounded-md outline-none ${className}`}
-        />
+        <Input register={{ ...register('email') }} name="email" />
         <p className="text-white">{errors.email?.message}</p>
         <Input
           register={{ ...register('password') }}
           name="password"
-          content="Enter your password"
           isPassword
         />
         <p className="text-white">{errors.password?.message}</p>

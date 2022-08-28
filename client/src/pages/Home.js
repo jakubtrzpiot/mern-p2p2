@@ -4,7 +4,7 @@ import { isAuth } from '../api/UserApi';
 import { Button, Hr } from '../components/CustomComponents';
 import { SignupForm } from '../components/SignupForm';
 
-export const Home = (props) => {
+export const Home = props => {
   const navigate = useNavigate();
 
   // style variables
@@ -24,12 +24,12 @@ export const Home = (props) => {
   return (
     <div className="flex w-full h-full p-4 flex-col items-center justify-center lg:flex-row lg:justify-between lg:max-w-[1280px] lg:mx-auto">
       <h1
-        className={`text-6xl font-bold text-center text-white px-6 pb-16 pt-20 md:text-8xl md:py-12`}
+        className={`text-6xl font-bold text-center text-white px-6 pb-16 pt-20 md:text-8xl md:py-12 lg:text-left`}
       >
-        <p className="pb-2">Connect</p>
-        <p className="pb-2">with</p>
-        <p className={`${gradient} pb-2`}>anyone</p>
-        <p className={`${gradient} pb-2`}>anywhere</p>
+        <p className="pb-2">Connect with</p>
+        <p className="pb-2 lg:hidden">with</p>
+        <p className={`${gradient} pb-2`}>anyone, anywhere.</p>
+        {/* <p className={`${gradient} pb-2`}>anywhere.</p> */}
       </h1>
       <div class="area">
         <ul class="circles">
@@ -61,12 +61,12 @@ export const Home = (props) => {
         </Link>
       </div>
       <SignupForm
-        form="hidden md:block z-10 relative"
-        signup={`w-full text-orange-400`}
-        input="placeholder-white bg-transparent text-white font-normal focus:shadow focus:border-orange-400 focus:border-solid focus:border"
-        button="bg-transparent text-orange-400 text-xl hover:bg-orange-400 hover:text-white"
+        form="hidden z-10 relative rounded-xl md:block"
+        signup="text-orange-400"
+        input="bg-transparent text-white font-normal border border-transparent focus:border-orange-400"
+        button="text-xl bg-orange-500 text-white font-normal"
         link="text-orange-400 font-bold"
-        label="text-white font-extrabold"
+        label="text-white tracking-wide"
       />
     </div>
   );
